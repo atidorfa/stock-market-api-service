@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     APP_ID: int
     APP_DESC: str
     APP_VERSION: str
-    API_TOKEN: str
+    API_KEY: str
 
     # DB config
     DB_USER: str
