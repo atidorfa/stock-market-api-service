@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+    db:
+        container_name: "mysql_be"
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=examplex
+            - MYSQL_DATABASE=mysql_be_challenge
+            - MYSQL_USER=dev3
+            - MYSQL_PASSWORD=dev300
+        ports:
+            - 3306:3306
+    redis:
+        container_name: "redis_be"
+        image: redis:6.0-alpine
+        ports:
+            # AMQP protocol port
+            - '6379:6379'
+    rabbitmq3:
+        container_name: "rabbitmq_be"
+        image: rabbitmq:3.8-management-alpine
+        environment:
+            - RABBITMQ_DEFAULT_USER=dev
+            - RABBITMQ_DEFAULT_PASS=dev00
+        ports:
+            # AMQP protocol port
+            - '5672:5672'
+            # HTTP management UI
+            - '15672:15672'
